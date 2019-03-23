@@ -5,8 +5,8 @@ import java.util.List;
 
 class Universe {
 
-    List<List<Cell>> grid;
-    List<Cell> seed;
+    private List<List<Cell>> grid;
+    private List<Cell> seed;
 
     Universe() {
         grid = new LinkedList<>();
@@ -37,7 +37,7 @@ class Universe {
         populateAndUnpopulate(grid);
     }
 
-    private void markCellsGoingToBorn(List<List<Cell>> grid) {
+    void markCellsGoingToBorn(List<List<Cell>> grid) {
         for (List<Cell> cells : grid) {
             for (Cell cell : cells) {
                 if (cell.getStatus() == 0) {
@@ -47,7 +47,7 @@ class Universe {
         }
     }
 
-    private void markCellsGoingToDie(List<List<Cell>> grid) {
+    void markCellsGoingToDie(List<List<Cell>> grid) {
         for (List<Cell> cells : grid) {
             for (Cell cell : cells) {
                 if (cell.getStatus() == 1) {

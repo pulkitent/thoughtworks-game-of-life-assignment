@@ -2,6 +2,7 @@ package com.tw.pathashala;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 class Cell {
     private Integer status;
@@ -10,6 +11,33 @@ class Cell {
     private Boolean isGoingToDie;
     private Boolean isGoingToBorn;
     private List<Cell> activeNeighbours;
+
+    Cell(Integer xCoordinate, Integer yCoordinate, Integer status) {
+        this.status = status;
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+        this.isGoingToDie = false;
+        this.isGoingToBorn = false;
+        this.activeNeighbours = new LinkedList<>();
+    }
+
+    void isGoingToBorn(List<List<Cell>> grid) {
+        Cell cell = this;
+        cell.findActiveNeighbours(grid);
+        int activeNeighbours = cell.getActiveNeighbours().size();
+        if (activeNeighbours == 3) {
+            cell.setIsGoingToBorn(true);
+        }
+    }
+
+    void isGoingToDie(List<List<Cell>> grid) {
+        Cell cell = this;
+        cell.findActiveNeighbours(grid);
+        int activeNeighbours = cell.getActiveNeighbours().size();
+        if (activeNeighbours > 3 || activeNeighbours < 2) {
+            cell.setIsGoingToDie(true);
+        }
+    }
 
     Integer getStatus() {
         return status;
@@ -31,12 +59,27 @@ class Cell {
         return isGoingToDie;
     }
 
-    private void setIsGoingToDie(Boolean goingToDie) {
-        isGoingToDie = goingToDie;
-    }
-
     Boolean getIsGoingToBorn() {
         return isGoingToBorn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cell cell = (Cell) o;
+        return status.equals(cell.status) &&
+                xCoordinate.equals(cell.xCoordinate) &&
+                yCoordinate.equals(cell.yCoordinate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(status, xCoordinate, yCoordinate);
+    }
+
+    private void setIsGoingToDie(Boolean goingToDie) {
+        isGoingToDie = goingToDie;
     }
 
     private void setIsGoingToBorn(Boolean goingToBorn) {
@@ -45,15 +88,6 @@ class Cell {
 
     private List<Cell> getActiveNeighbours() {
         return activeNeighbours;
-    }
-
-    Cell(Integer xCoordinate, Integer yCoordinate, Integer status) {
-        this.status = status;
-        this.xCoordinate = xCoordinate;
-        this.yCoordinate = yCoordinate;
-        this.isGoingToDie = false;
-        this.isGoingToBorn = false;
-        this.activeNeighbours = new LinkedList<>();
     }
 
     private void findActiveNeighbours(List<List<Cell>> grid) {
@@ -71,24 +105,6 @@ class Cell {
                     }
                 }
             }
-        }
-    }
-
-    void isGoingToBorn(List<List<Cell>> grid) {
-        Cell cell = this;
-        cell.findActiveNeighbours(grid);
-        int activeNeighbours = cell.getActiveNeighbours().size();
-        if (activeNeighbours == 3) {
-            cell.setIsGoingToBorn(true);
-        }
-    }
-
-    void isGoingToDie(List<List<Cell>> grid) {
-        Cell cell = this;
-        cell.findActiveNeighbours(grid);
-        int activeNeighbours = cell.getActiveNeighbours().size();
-        if (activeNeighbours > 3 || activeNeighbours < 2) {
-            cell.setIsGoingToDie(true);
         }
     }
 }
