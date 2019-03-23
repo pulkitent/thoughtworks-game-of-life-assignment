@@ -6,6 +6,7 @@ import java.util.List;
 import static com.tw.pathashala.Cell.Alive;
 import static com.tw.pathashala.Cell.Dead;
 
+//Represents collection of cells
 class Universe {
     private List<List<Cell>> grid;
     private List<Cell> seed;

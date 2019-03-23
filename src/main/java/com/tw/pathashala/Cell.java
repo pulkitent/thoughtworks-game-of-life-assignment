@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
+//Represents a space in the universe
 class Cell {
     static final int Dead = 0;
     static final int Alive = 1;

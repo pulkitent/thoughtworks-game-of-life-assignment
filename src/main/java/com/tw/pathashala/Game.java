@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+
+//Represents an activity that one engages in for fun
 class Game {
     private Scanner console;
     private Universe universe;
