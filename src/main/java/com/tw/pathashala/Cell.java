@@ -24,6 +24,21 @@ class Cell {
         this.activeNeighbours = new LinkedList<>();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cell cell = (Cell) o;
+        return status.equals(cell.status) &&
+                xCoordinate.equals(cell.xCoordinate) &&
+                yCoordinate.equals(cell.yCoordinate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(status, xCoordinate, yCoordinate);
+    }
+
     void checkIfGoingToDieOrBorn(List<List<Cell>> grid, Boolean isActive) {
         Cell cell = this;
         cell.findActiveNeighbours(grid);
@@ -42,12 +57,12 @@ class Cell {
         }
     }
 
-    Integer getStatus() {
-        return status;
-    }
-
     void setStatus(Integer status) {
         this.status = status;
+    }
+
+    Integer getStatus() {
+        return status;
     }
 
     Integer getXCoordinate() {
@@ -64,21 +79,6 @@ class Cell {
 
     Boolean getIsGoingToBorn() {
         return isGoingToBorn;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cell cell = (Cell) o;
-        return status.equals(cell.status) &&
-                xCoordinate.equals(cell.xCoordinate) &&
-                yCoordinate.equals(cell.yCoordinate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(status, xCoordinate, yCoordinate);
     }
 
     private void setIsGoingToDie(Boolean goingToDie) {
