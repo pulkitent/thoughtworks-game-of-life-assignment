@@ -9,10 +9,10 @@ class Cell {
     static final int Alive = 1;
 
     private Integer status;
-    private Integer xCoordinate;
-    private Integer yCoordinate;
     private Boolean isGoingToDie;
     private Boolean isGoingToBorn;
+    private final Integer xCoordinate;
+    private final Integer yCoordinate;
     private List<Cell> activeNeighbours;
 
     Cell(Integer xCoordinate, Integer yCoordinate, Integer status) {
@@ -24,7 +24,7 @@ class Cell {
         this.activeNeighbours = new LinkedList<>();
     }
 
-    void isGoingToBorn(List<List<Cell>> grid) {
+    void checkIfGoingToBorn(List<List<Cell>> grid) {
         Cell cell = this;
         cell.findActiveNeighbours(grid);
         int activeNeighbours = cell.getActiveNeighbours().size();
@@ -33,7 +33,7 @@ class Cell {
         }
     }
 
-    void isGoingToDie(List<List<Cell>> grid) {
+    void checkIfGoingToDie(List<List<Cell>> grid) {
         Cell cell = this;
         cell.findActiveNeighbours(grid);
         int activeNeighbours = cell.getActiveNeighbours().size();
@@ -93,19 +93,29 @@ class Cell {
         return activeNeighbours;
     }
 
+    private Boolean validateRangeOfNeighbours(int i, int j, List<List<Cell>> grid) {
+        Integer x = this.getXCoordinate();
+        Integer y = this.getYCoordinate();
+        if (i < 0 || i >= grid.size()) {
+            return false;
+        }
+        if (j < 0 || j >= grid.get(i).size()) {
+            return false;
+        }
+        return i != x || j != y;
+    }
+
     private void findActiveNeighbours(List<List<Cell>> grid) {
         //TODO : Refactor and remove multiple indentation
-        int x = this.getXCoordinate();
-        int y = this.getYCoordinate();
+        Integer x = this.getXCoordinate();
+        Integer y = this.getYCoordinate();
+        Cell cell;
         for (int i = x - 1; i <= x + 1; i++) {
             for (int j = y - 1; j <= y + 1; j++) {
-                if (i >= 0 && i < grid.size()) {
-                    if (j >= 0 && j < grid.get(i).size()) {
-                        if (i != x || j != y) {
-                            if (grid.get(i).get(j).getStatus() == Alive) {
-                                activeNeighbours.add(grid.get(i).get(j));
-                            }
-                        }
+                if (validateRangeOfNeighbours(i, j, grid)) {
+                    cell = grid.get(i).get(j);
+                    if (cell.getStatus() == Alive) {
+                        activeNeighbours.add(cell);
                     }
                 }
             }

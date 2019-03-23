@@ -25,18 +25,30 @@ class Universe {
 
     void provideSeed(List<List<Cell>> grid, List<Cell> seeds) {
         int xCoordinate, yCoordinate;
+        Cell cell;
         for (Cell seed : seeds) {
             xCoordinate = seed.getXCoordinate();
             yCoordinate = seed.getYCoordinate();
-            Cell cell = grid.get(xCoordinate).get(yCoordinate);
+            cell = grid.get(xCoordinate).get(yCoordinate);
             cell.setStatus(Alive);
         }
     }
 
     void nextGeneration(List<List<Cell>> grid) {
-        markCellsGoingToBorn(grid);
-        markCellsGoingToDie(grid);
-        populateAndUnpopulate(grid);
+        this.markCellsGoingToBornAndDie(grid);
+        this.populateAndUnpopulate(grid);
+    }
+
+    private void markCellsGoingToBornAndDie(List<List<Cell>> grid) {
+        for (List<Cell> cells : grid) {
+            for (Cell cell : cells) {
+                if (cell.getStatus() == Dead) {
+                    cell.checkIfGoingToBorn(grid);
+                } else if (cell.getStatus() == Alive) {
+                    cell.checkIfGoingToDie(grid);
+                }
+            }
+        }
     }
 
     private void populateAndUnpopulate(List<List<Cell>> grid) {
@@ -44,29 +56,8 @@ class Universe {
             for (Cell cell : cells) {
                 if (cell.getIsGoingToDie()) {
                     cell.setStatus(Dead);
-                }
-                if (cell.getIsGoingToBorn()) {
+                } else if (cell.getIsGoingToBorn()) {
                     cell.setStatus(Alive);
-                }
-            }
-        }
-    }
-
-    private void markCellsGoingToBorn(List<List<Cell>> grid) {
-        for (List<Cell> cells : grid) {
-            for (Cell cell : cells) {
-                if (cell.getStatus() == Dead) {
-                    cell.isGoingToBorn(grid);
-                }
-            }
-        }
-    }
-
-    private void markCellsGoingToDie(List<List<Cell>> grid) {
-        for (List<Cell> cells : grid) {
-            for (Cell cell : cells) {
-                if (cell.getStatus() == Alive) {
-                    cell.isGoingToDie(grid);
                 }
             }
         }
