@@ -37,7 +37,20 @@ class Universe {
         populateAndUnpopulate(grid);
     }
 
-    void markCellsGoingToBorn(List<List<Cell>> grid) {
+    private void populateAndUnpopulate(List<List<Cell>> grid) {
+        for (List<Cell> cells : grid) {
+            for (Cell cell : cells) {
+                if (cell.getIsGoingToDie()) {
+                    cell.setStatus(0);
+                }
+                if (cell.getIsGoingToBorn()) {
+                    cell.setStatus(1);
+                }
+            }
+        }
+    }
+
+    private void markCellsGoingToBorn(List<List<Cell>> grid) {
         for (List<Cell> cells : grid) {
             for (Cell cell : cells) {
                 if (cell.getStatus() == 0) {
@@ -47,24 +60,11 @@ class Universe {
         }
     }
 
-    void markCellsGoingToDie(List<List<Cell>> grid) {
+    private void markCellsGoingToDie(List<List<Cell>> grid) {
         for (List<Cell> cells : grid) {
             for (Cell cell : cells) {
                 if (cell.getStatus() == 1) {
                     cell.isGoingToDie(grid);
-                }
-            }
-        }
-    }
-
-    private void populateAndUnpopulate(List<List<Cell>> grid) {
-        for (List<Cell> cells : grid) {
-            for (Cell cell : cells) {
-                if (cell.getIsGoingToDie()) {
-                    cell.setStatus(0);
-                }
-                if (cell.getIsGoingToBorn()) {
-                    cell.setStatus(1);
                 }
             }
         }
