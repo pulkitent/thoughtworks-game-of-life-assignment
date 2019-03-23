@@ -1,4 +1,4 @@
-image: gradle:alpine
+image: gradle:5.3.0-jdk11
 
 build:
   stage: build
