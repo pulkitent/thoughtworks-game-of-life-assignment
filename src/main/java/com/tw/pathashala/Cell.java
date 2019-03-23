@@ -24,21 +24,21 @@ class Cell {
         this.activeNeighbours = new LinkedList<>();
     }
 
-    void checkIfGoingToBorn(List<List<Cell>> grid) {
+    void checkIfGoingToDieOrBorn(List<List<Cell>> grid, Boolean isActive) {
         Cell cell = this;
         cell.findActiveNeighbours(grid);
         int activeNeighbours = cell.getActiveNeighbours().size();
-        if (activeNeighbours == 3) {
-            cell.setIsGoingToBorn(true);
-        }
-    }
 
-    void checkIfGoingToDie(List<List<Cell>> grid) {
-        Cell cell = this;
-        cell.findActiveNeighbours(grid);
-        int activeNeighbours = cell.getActiveNeighbours().size();
-        if (activeNeighbours > 3 || activeNeighbours < 2) {
-            cell.setIsGoingToDie(true);
+        if (isActive) {
+            if (activeNeighbours > 3 || activeNeighbours < 2) {
+                cell.setIsGoingToDie(true);
+            }
+        }
+
+        if (!isActive) {
+            if (activeNeighbours == 3) {
+                cell.setIsGoingToBorn(true);
+            }
         }
     }
 

@@ -43,9 +43,9 @@ class Universe {
         for (List<Cell> cells : grid) {
             for (Cell cell : cells) {
                 if (cell.getStatus() == Dead) {
-                    cell.checkIfGoingToBorn(grid);
+                    cell.checkIfGoingToDieOrBorn(grid, false);
                 } else if (cell.getStatus() == Alive) {
-                    cell.checkIfGoingToDie(grid);
+                    cell.checkIfGoingToDieOrBorn(grid, true);
                 }
             }
         }
