@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Objects;
 
 class Cell {
+    static final int Dead = 0;
+    static final int Alive = 1;
+
     private Integer status;
     private Integer xCoordinate;
     private Integer yCoordinate;
@@ -91,6 +94,7 @@ class Cell {
     }
 
     private void findActiveNeighbours(List<List<Cell>> grid) {
+        //TODO : Refactor and remove multiple indentation
         int x = this.getXCoordinate();
         int y = this.getYCoordinate();
         for (int i = x - 1; i <= x + 1; i++) {
@@ -98,7 +102,7 @@ class Cell {
                 if (i >= 0 && i < grid.size()) {
                     if (j >= 0 && j < grid.get(i).size()) {
                         if (i != x || j != y) {
-                            if (grid.get(i).get(j).getStatus() == 1) {
+                            if (grid.get(i).get(j).getStatus() == Alive) {
                                 activeNeighbours.add(grid.get(i).get(j));
                             }
                         }
