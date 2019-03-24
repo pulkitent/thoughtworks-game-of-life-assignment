@@ -1,4 +1,6 @@
-Game of LifeThe universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in oneof two possible states,live 
+**Game of Life**
+
+The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in oneof two possible states,live 
 or dead.
 Every cell interacts with its eight neighbours, which are thecells that aredirectly horizontally, vertically, or diagonally adjacent.
 
