@@ -26,4 +26,13 @@ class CellTest {
 
         Assertions.assertEquals(expectedNeighbours, neighbours);
     }
+
+    @Test
+    @DisplayName("Should compare two Cells with same coordinates")
+    void expectsTwoCellsTEqualWithSameCoordinate() {
+        Cell cell = new Cell(1, 1);
+        Cell anotherCell = new Cell(1, 1);
+
+        Assertions.assertTrue(cell.equals(anotherCell));
+    }
 }
