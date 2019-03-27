@@ -21,6 +21,10 @@ public class UniverseTest {
         List<Cell> expectedAliveCells = new LinkedList<>();
         expectedAliveCells.add(new Cell(1, 1));
         expectedAliveCells.add(new Cell(2, 4));
+        expectedAliveCells.add(new Cell(0, 2));
+        expectedAliveCells.add(new Cell(2, 1));
+        expectedAliveCells.add(new Cell(1, 4));
+        expectedAliveCells.add(new Cell(3, 3));
         Universe universe = new Universe(seeds);
 
         List<Cell> nextGeneration = universe.nextGeneration();
