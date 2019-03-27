@@ -34,7 +34,7 @@ public class UniverseTest {
 
     @Test
     @DisplayName("Expects to find alive Cells that are going to die in the next generation")
-    void expectsptToFindCellsDyingInNextGeneration() {
+    void expectstToFindCellsDyingInNextGeneration() {
         List<Cell> seeds = new LinkedList<>();
         seeds.add(new Cell(1, 1));
         seeds.add(new Cell(1, 2));
@@ -48,5 +48,25 @@ public class UniverseTest {
         List<Cell> nextGeneration = universe.nextGeneration();
 
         Assertions.assertNotEquals(expectedAliveCells, nextGeneration);
+    }
+
+    @Test
+    @DisplayName("Expects to find alive Cells that are going to die in the next generation")
+    void expectstToFindNextGenerationBlockPattern() {
+        List<Cell> seeds = new LinkedList<>();
+        seeds.add(new Cell(1, 1));
+        seeds.add(new Cell(1, 2));
+        seeds.add(new Cell(2, 1));
+        seeds.add(new Cell(2, 2));
+        List<Cell> expectedAliveCells = new LinkedList<>();
+        expectedAliveCells.add(new Cell(1, 1));
+        expectedAliveCells.add(new Cell(1, 2));
+        expectedAliveCells.add(new Cell(2, 1));
+        expectedAliveCells.add(new Cell(2, 2));
+        Universe universe = new Universe(seeds);
+
+        List<Cell> nextGeneration = universe.nextGeneration();
+
+        Assertions.assertEquals(expectedAliveCells, nextGeneration);
     }
 }
