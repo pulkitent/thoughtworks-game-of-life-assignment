@@ -69,4 +69,26 @@ class UniverseTest {
 
         Assertions.assertEquals(expectedAliveCells, nextGeneration);
     }
+
+    @Test
+    @DisplayName("Expects to find alive Cells that are going to die in the next generation")
+    void expectstToFindNextGenerationBoatPattern() {
+        List<Cell> seeds = new LinkedList<>();
+        seeds.add(new Cell(0, 1));
+        seeds.add(new Cell(1, 0));
+        seeds.add(new Cell(2, 1));
+        seeds.add(new Cell(0, 2));
+        seeds.add(new Cell(1, 2));
+        List<Cell> expectedAliveCells = new LinkedList<>();
+        expectedAliveCells.add(new Cell(0, 1));
+        expectedAliveCells.add(new Cell(1, 0));
+        expectedAliveCells.add(new Cell(2, 1));
+        expectedAliveCells.add(new Cell(0, 2));
+        expectedAliveCells.add(new Cell(1, 2));
+        Universe universe = new Universe(seeds);
+
+        List<Cell> nextGeneration = universe.nextGeneration();
+
+        Assertions.assertEquals(expectedAliveCells, nextGeneration);
+    }
 }
