@@ -29,10 +29,19 @@ class CellTest {
 
     @Test
     @DisplayName("Should compare two Cells with same coordinates")
-    void expectsTwoCellsTEqualWithSameCoordinate() {
+    void expectsTwoCellsEqualWithSameCoordinates() {
         Cell cell = new Cell(1, 1);
         Cell anotherCell = new Cell(1, 1);
 
         Assertions.assertTrue(cell.equals(anotherCell));
+    }
+
+    @Test
+    @DisplayName("Should compare two Cells with same coordinates")
+    void expectsTwoCellsNotEqualWithDifferentCoordinates() {
+        Cell cell = new Cell(1, 1);
+        Cell anotherCell = new Cell(1, 2);
+
+        Assertions.assertFalse(cell.equals(anotherCell));
     }
 }
