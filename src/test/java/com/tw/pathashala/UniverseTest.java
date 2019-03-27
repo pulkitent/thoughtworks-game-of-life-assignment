@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-public class UniverseTest {
+class UniverseTest {
     @Test
     @DisplayName("Expects to find alive Cells that are going to die in the next generation")
-    void expectsToFindCellsDyingInNextGeneration() {
+    void expectsToFindNextGeneration() {
         List<Cell> seeds = new LinkedList<>();
         seeds.add(new Cell(1, 1));
         seeds.add(new Cell(1, 2));
@@ -34,7 +34,7 @@ public class UniverseTest {
 
     @Test
     @DisplayName("Expects to find alive Cells that are going to die in the next generation")
-    void expectstToFindCellsDyingInNextGeneration() {
+    void expectsNotToFindCellsDyingInNextGeneration() {
         List<Cell> seeds = new LinkedList<>();
         seeds.add(new Cell(1, 1));
         seeds.add(new Cell(1, 2));
