@@ -22,4 +22,4 @@ The below inputs provide the pattern or initial cells in the universe .
 The output is the state of thesystemin the next tick (one run of the application of all the rules) , represented in the same format.
 
 
-PS - for lastest code refer hotfix branch
+PS - for lastest code refer hotfix branch and moreover was using porper CI/CD on gitlab (refer .gitlab-ci.yml) but migrated project here on Github
