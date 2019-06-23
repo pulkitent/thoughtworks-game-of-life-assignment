@@ -20,3 +20,6 @@ Problem.
 The inputs below represent the coordinates of the cells in the universe which are a alive cell.
 The below inputs provide the pattern or initial cells in the universe .
 The output is the state of thesystemin the next tick (one run of the application of all the rules) , represented in the same format.
+
+
+PS - for lastest code refer hotfix branch
