@@ -1,3 +1,10 @@
+This is a gradle based on java. It's an Objected Oriented Design(OOD) problem generally askied in interviews. Main reason behind asking these kind of problems in interview is to see whether a candidate can do following :
+1. Can a candidate write a working code in given short span of time.
+2. Can a candidate write higly readbale code. Intention must be clear by reading the code.
+3. Can a candidate follow the principle the of DRY (Don't Repeat Yourself) and avoid to break encapsulation by following Domain Driven Design(DDD).
+4. Can a candidate achieve the solution with minimum number of elements using YAGNI principle (that is without creating unnecesarry interfaces etc).
+
+**PROBLEM STATEMENT**
 **Game of Life**
 
 The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in oneof two possible states,live 
