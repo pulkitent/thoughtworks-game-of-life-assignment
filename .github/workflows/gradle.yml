@@ -1,4 +1,4 @@
-name: Continuous integration Pipleline
+name: Build Pipeline with Unit test
 
 on: [push]
 
@@ -13,6 +13,6 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Build project with Gradle and run unit tests
+    - name: Build project and run unit tests
       run: ./gradlew build
       
