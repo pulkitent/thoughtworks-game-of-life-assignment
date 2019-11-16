@@ -5,6 +5,7 @@ This is a gradle based on java. It's an Objected Oriented Design(OOD) problem ge
 4. Can a candidate achieve the solution with minimum number of elements using YAGNI principle (that is without creating unnecesarry interfaces etc).
 
 **PROBLEM STATEMENT**
+
 **Game of Life**
 
 The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in oneof two possible states,live 
